@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.cxf.jpush.activity.TestActivity;
+import com.cxf.jpush.activity.TestActivity2;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -21,10 +22,11 @@ public class JPushReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle bundle=intent.getExtras();
+        Log.e(TAG, "onReceive: --------------->"+intent );
         switch (intent.getAction()){
             //接收通知
             case "cn.jpush.android.intent.NOTIFICATION_OPENED":
-                Intent i = new Intent(context, TestActivity.class);
+                Intent i = new Intent(context, TestActivity2.class);
                 i.putExtras(bundle);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
                 context.startActivity(i);
